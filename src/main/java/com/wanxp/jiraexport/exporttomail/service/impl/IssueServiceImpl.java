@@ -1,8 +1,8 @@
-package com.wanxp.jiraexport.jiraexporttomail.service.impl;
+package com.wanxp.jiraexport.exporttomail.service.impl;
 
 import com.atlassian.jira.rest.client.api.domain.Issue;
-import com.wanxp.jiraexport.jiraexporttomail.manager.JiraDataManager;
-import com.wanxp.jiraexport.jiraexporttomail.service.IssueService;
+import com.wanxp.jiraexport.exporttomail.manager.JiraDataManager;
+import com.wanxp.jiraexport.exporttomail.service.IssueService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

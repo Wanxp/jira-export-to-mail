@@ -1,4 +1,4 @@
-package com.wanxp.jiraexport.jiraexporttomail.properties;
+package com.wanxp.jiraexport.exporttomail.properties;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

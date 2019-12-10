@@ -1,4 +1,4 @@
-package com.wanxp.jiraexport.jiraexporttomail.model;
+package com.wanxp.jiraexport.exporttomail.model;
 
 import lombok.Data;
 

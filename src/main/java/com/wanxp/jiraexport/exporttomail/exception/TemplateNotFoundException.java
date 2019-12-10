@@ -1,4 +1,4 @@
-package com.wanxp.jiraexport.jiraexporttomail.exception;
+package com.wanxp.jiraexport.exporttomail.exception;
 
 /**
  * 模板文件未找到

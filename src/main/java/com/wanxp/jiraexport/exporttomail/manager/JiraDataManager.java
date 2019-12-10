@@ -1,4 +1,4 @@
-package com.wanxp.jiraexport.jiraexporttomail.manager;
+package com.wanxp.jiraexport.exporttomail.manager;
 
 import com.atlassian.jira.rest.client.api.JiraRestClient;
 import com.atlassian.jira.rest.client.api.domain.Issue;

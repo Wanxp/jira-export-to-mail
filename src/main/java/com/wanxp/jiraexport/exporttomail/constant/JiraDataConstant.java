@@ -1,4 +1,4 @@
-package com.wanxp.jiraexport.jiraexporttomail.constant;
+package com.wanxp.jiraexport.exporttomail.constant;
 
 /**
  * jira数据相关类

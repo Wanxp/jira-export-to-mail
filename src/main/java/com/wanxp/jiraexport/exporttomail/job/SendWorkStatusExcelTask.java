@@ -1,7 +1,7 @@
-package com.wanxp.jiraexport.jiraexporttomail.job;
+package com.wanxp.jiraexport.exporttomail.job;
 
-import com.wanxp.jiraexport.jiraexporttomail.export.DevWeeklyJobExporter;
-import com.wanxp.jiraexport.jiraexporttomail.service.IssueService;
+import com.wanxp.jiraexport.exporttomail.export.DevWeeklyJobExporter;
+import com.wanxp.jiraexport.exporttomail.service.IssueService;
 import lombok.extern.slf4j.Slf4j;
 import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;

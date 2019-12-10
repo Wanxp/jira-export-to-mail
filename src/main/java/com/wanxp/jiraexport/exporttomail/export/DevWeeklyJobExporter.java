@@ -1,9 +1,9 @@
-package com.wanxp.jiraexport.jiraexporttomail.export;
+package com.wanxp.jiraexport.exporttomail.export;
 
 import com.atlassian.jira.rest.client.api.domain.Issue;
-import com.wanxp.jiraexport.jiraexporttomail.model.WeekJobDetail;
-import com.wanxp.jiraexport.jiraexporttomail.service.IssueService;
-import com.wanxp.jiraexport.jiraexporttomail.util.JxlsTemplate;
+import com.wanxp.jiraexport.exporttomail.model.WeekJobDetail;
+import com.wanxp.jiraexport.exporttomail.service.IssueService;
+import com.wanxp.jiraexport.exporttomail.util.JxlsTemplate;
 import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import static com.wanxp.jiraexport.jiraexporttomail.constant.JiraDataConstant.*;
+import static com.wanxp.jiraexport.exporttomail.constant.JiraDataConstant.*;
 
 /**
  * issue导出excel

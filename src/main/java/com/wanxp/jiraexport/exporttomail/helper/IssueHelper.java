@@ -1,4 +1,4 @@
-package com.wanxp.jiraexport.jiraexporttomail.helper;
+package com.wanxp.jiraexport.exporttomail.helper;
 
 import com.atlassian.jira.rest.client.api.domain.Issue;
 import org.springframework.util.StringUtils;

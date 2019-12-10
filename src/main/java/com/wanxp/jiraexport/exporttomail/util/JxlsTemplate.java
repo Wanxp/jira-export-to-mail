@@ -1,6 +1,6 @@
-package com.wanxp.jiraexport.jiraexporttomail.util;
+package com.wanxp.jiraexport.exporttomail.util;
 
-import com.wanxp.jiraexport.jiraexporttomail.exception.TemplateNotFoundException;
+import com.wanxp.jiraexport.exporttomail.exception.TemplateNotFoundException;
 import lombok.extern.slf4j.Slf4j;
 import org.jxls.common.Context;
 import org.jxls.util.JxlsHelper;

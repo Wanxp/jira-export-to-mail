@@ -1,9 +1,9 @@
-package com.wanxp.jiraexport.jiraexporttomail.config;
+package com.wanxp.jiraexport.exporttomail.config;
 
 import com.atlassian.jira.rest.client.api.JiraRestClient;
 import com.atlassian.jira.rest.client.api.JiraRestClientFactory;
 import com.atlassian.jira.rest.client.internal.async.AsynchronousJiraRestClientFactory;
-import com.wanxp.jiraexport.jiraexporttomail.properties.JiraProperties;
+import com.wanxp.jiraexport.exporttomail.properties.JiraProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
