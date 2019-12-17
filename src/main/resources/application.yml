@@ -1,0 +1,61 @@
+spring:
+  application:
+    name: etower-warehousing
+  messages:
+    encoding: UTF-8
+    basename: i18n/messages_en_US
+  jpa:
+    database: mysql
+    show-sql: true
+    generate-ddl: false
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/warehousing?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    username: root
+    password: '0001'
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      auto-commit: true
+      minimum-idle: 2
+      idle-timeout: 60000
+      connection-timeout: 30000
+      max-lifetime: 1800000
+      pool-name: DatebookHikariCP
+      maximum-pool-size: 5
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    # 密码 没有则可以不填
+    #    password: 123456
+    # 如果使用的jedis 则将lettuce改成jedis即可
+    lettuce:
+      pool:
+        # 最大活跃链接数 默认8
+        max-active: 8
+        # 最大空闲连接数 默认8
+        max-idle: 8
+        # 最小空闲连接数 默认0
+        min-idle: 0
+  mail:
+    host: smtp.exmail.qq.com
+    username: email_username
+    password: email_password
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+
+jira:
+  password: your_jira_password
+  uri: your_jira_uri
+  username: your_jira_username
+
+
