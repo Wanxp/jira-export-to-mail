@@ -4,11 +4,15 @@ import com.wanxp.jiraexport.exporttomail.export.DevWeeklyJobExporter;
 import com.wanxp.jiraexport.exporttomail.service.IssueService;
 import lombok.extern.slf4j.Slf4j;
 import org.joda.time.DateTime;
+import org.quartz.InterruptableJob;
+import org.quartz.JobExecutionContext;
+import org.quartz.JobExecutionException;
+import org.quartz.UnableToInterruptJobException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
-import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.scheduling.quartz.QuartzJobBean;
 import org.springframework.stereotype.Component;
 
 import javax.mail.MessagingException;
@@ -21,10 +25,7 @@ import java.util.HashMap;
  */
 @Component
 @Slf4j
-public class SendWorkStatusExcelTask {
-
-    @Autowired
-    private IssueService issueService;
+public class SendWorkStatusExcelJob extends QuartzJobBean implements InterruptableJob {
 
     @Autowired
     private DevWeeklyJobExporter devWeeklyJobExporter;
@@ -35,7 +36,6 @@ public class SendWorkStatusExcelTask {
     /**
      * 任务执行体
      */
-    @Scheduled(fixedDelay = 10000)
     public void sendWorkStatusExcelTask() {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         try {
@@ -66,5 +66,16 @@ public class SendWorkStatusExcelTask {
                 "    如有任何问题,及时联系,谢谢!");
         helper.addAttachment(fileName + ".xlsx", new ByteArrayResource(os.toByteArray()));
         javaMailSender.send(mimeMessage);
+    }
+
+    @Override
+    public void interrupt() throws UnableToInterruptJobException {
+        log.warn("job interrupt");
+
+    }
+
+    @Override
+    protected void executeInternal(JobExecutionContext jobExecutionContext) throws JobExecutionException {
+        sendWorkStatusExcelTask();
     }
 }
