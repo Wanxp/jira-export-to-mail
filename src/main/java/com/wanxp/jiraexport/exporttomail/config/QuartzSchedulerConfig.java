@@ -3,7 +3,7 @@ package com.wanxp.jiraexport.exporttomail.config;
 import com.wanxp.jiraexport.exporttomail.service.JobsListener;
 import com.wanxp.jiraexport.exporttomail.service.TriggerListner;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.config.PropertiesFactoryBean;
+import org.springframework.boot.autoconfigure.quartz.QuartzProperties;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,10 +19,10 @@ import java.util.Properties;
  */
 @Configuration
 public class QuartzSchedulerConfig {
- 
+
     @Autowired
     private DataSource dataSource;
- 
+
     @Autowired
     private ApplicationContext applicationContext;
      
@@ -31,6 +31,9 @@ public class QuartzSchedulerConfig {
 
     @Autowired
     private JobsListener jobsListener;
+
+    @Autowired
+    private QuartzProperties quartzProperties;
     
     /**
      * create scheduler
@@ -40,8 +43,9 @@ public class QuartzSchedulerConfig {
         SchedulerFactoryBean factory = new SchedulerFactoryBean();
         factory.setOverwriteExistingJobs(true);
         factory.setDataSource(dataSource);
-        factory.setQuartzProperties(quartzProperties());
-        
+        Properties properties = new Properties();
+        properties.putAll(quartzProperties.getProperties());
+        factory.setQuartzProperties(properties);
         //Register listeners to get notification on Trigger misfire etc
         factory.setGlobalTriggerListeners(triggerListner);
         factory.setGlobalJobListeners(jobsListener);
@@ -53,16 +57,7 @@ public class QuartzSchedulerConfig {
         return factory;
     }
  
-    /**
-     * Configure quartz using properties file
-     */
-    @Bean
-    public Properties quartzProperties() throws IOException {
-        PropertiesFactoryBean propertiesFactoryBean = new PropertiesFactoryBean();
-        propertiesFactoryBean.setLocation(new ClassPathResource("/quartz.properties"));
-        propertiesFactoryBean.afterPropertiesSet();
-        return propertiesFactoryBean.getObject();
-    }
+
  
   
 }

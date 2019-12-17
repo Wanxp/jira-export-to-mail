@@ -1,23 +1,11 @@
 spring:
   application:
-    name: etower-warehousing
-  messages:
-    encoding: UTF-8
-    basename: i18n/messages_en_US
-  jpa:
-    database: mysql
-    show-sql: true
-    generate-ddl: false
-    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
-    hibernate:
-      ddl-auto: update
-      naming:
-        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    name: jira-export-to-mail
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/warehousing?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    url: jdbc:mysql://127.0.0.1:3306/jira_export_job?setUnicode=true&characterEncoding=utf8
     username: root
     password: '0001'
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    driver-class-name: com.mysql.jdbc.Driver
     type: com.zaxxer.hikari.HikariDataSource
     hikari:
       auto-commit: true
@@ -52,7 +40,29 @@ spring:
           starttls:
             enable: true
             required: true
-
+  quartz:
+    job-store-type: jdbc
+    jdbc:
+      initialize-schema: never
+    properties:
+      org:
+        quartz:
+          jobStore:
+            scheduler:
+              instanceId: AUTO
+              instanceName: jira-export-to-mail-scheduler
+            class: org.quartz.impl.jdbcjobstore.JobStoreTX
+            driverDelegateClass: org.quartz.impl.jdbcjobstore.StdJDBCDelegate
+            isClustered: false
+            misfireThreshold: 60000
+            tablePrefix: qrtz_
+            useProperties: true
+          plugin:
+            shutdownHook:
+              class: org.quartz.plugins.management.ShutdownHookPlugin
+              cleanShutdown: true
+          threadPool:
+            threadCount: 5
 jira:
   password: your_jira_password
   uri: your_jira_uri

@@ -43,6 +43,7 @@
 ## job
 ### schedule
 * [基于Spring Boot 实现定时任务](https://www.tianmaying.com/tutorial/spring-scheduling-task)
+* [](https://medium.com/@ChamithKodikara/spring-boot-2-quartz-2-scheduler-integration-a8eaaf850805)
 ### job-monitor
 * [spring-boot-in-action](git@github.com:qq1311256696/Spring-Boot-in-Action.git)
 * [spring-boot-quartz-demo](git@github.com:javabypatel/spring-boot-quartz-demo.git)
